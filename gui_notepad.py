@@ -403,6 +403,33 @@ def Sall():
     textarea.event_generate(("<<SelectAll>>"))
 
 
+def bold():
+    global fontsman
+    if b.get() == 1:
+        fontsmain.config(weight="bold")
+        print(1)
+    elif b.get() == 0:
+        fontsmain.config(weight="normal")
+
+
+def italic():
+    global fontsmainn
+    if i.get() == 1:
+        fontsmain.config(slant="italic")
+        print(1)
+    elif i.get() == 0:
+        fontsmain.config(slant="roman")
+
+
+def underline():
+    global fontsmain
+    if u.get() == 1:
+        fontsmain.config(underline=True)
+        print(1)
+    elif u.get() == 0:
+        fontsmain.config(underline=False)
+
+
 def exit1():
     global filetosave
     # print(root.title())
@@ -483,6 +510,19 @@ item3.add_checkbutton(label="Word Wrap", command=WordWrap,
 item3.add_command(label="Random Font", command=Fonts)
 item3.add_command(label="Default Font", command=DFonts)
 menu.add_cascade(label="Format", menu=item3)
+item3.add_separator()
+# item3.add_command(label="Format Text")
+item3menu = Menu(item3, tearoff=0)
+item3.add_cascade(label="Format Text", menu=item3menu)
+b = IntVar(value=0)
+i = IntVar(value=0)
+u = IntVar(value=0)
+item3menu.add_checkbutton(label="Bold", command=bold,
+                          variable=b, onvalue=1, offvalue=0)
+item3menu.add_checkbutton(label="Italic", command=italic,
+                          variable=i, onvalue=1, offvalue=0)
+item3menu.add_checkbutton(
+    label="Underline", command=underline, variable=u, onvalue=1, offvalue=0)
 
 cbs = IntVar(value=1)
 
