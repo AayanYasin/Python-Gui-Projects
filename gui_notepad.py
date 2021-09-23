@@ -6,10 +6,10 @@ import random as rd
 import datetime as dt
 import os
 import keyword as kb
+import webbrowser as wb
 
 root = Tk()
-root.iconbitmap(
-    r"C:\Users\Yasin\Documents\Aayan\Aayan Programming Projects\Python Gui Games\Notepad1.ico")
+root.iconbitmap("Notepad1.ico")
 root.title("Untitled - Notepad - Aayan Yasin")
 O1x = 1120
 O2y = 550
@@ -21,7 +21,6 @@ fontsmain = font.Font(family="areal", size=12)
 
 Scroll = Scrollbar(root)
 Scroll2 = Scrollbar(root, orient=HORIZONTAL)
-# Scroll2.pack(anchor=S, fill=X)
 Scroll.pack(side=RIGHT, fill=Y)
 
 textarea = Text(root, font=fontsmain, yscrollcommand=Scroll.set,
@@ -34,7 +33,6 @@ def statusbarmain():
     global statusbar_Content1
     statusbar = Frame(textarea)
     statusbar.pack(side=BOTTOM, fill=X)
-    # Scroll2.pack(side=BOTTOM, fill=X)
     statusbar_Content1 = Label(
         statusbar, anchor=SW, width=18, text="Ln 1, col 1")
     statusbar_Content2 = Label(statusbar, anchor=SW, text="100%")
@@ -540,10 +538,13 @@ item4.add_checkbutton(label="Status Bar", command=StatusCheckButton,
 menu.add_cascade(label="View", menu=item4)
 
 item5 = Menu(menu, tearoff=0)
-item5.add_command(label="View Help", command="")
-item5.add_command(label="Send Feedback", command="")
+item5.add_command(label="View Help", command=lambda: wb.open_new_tab(
+    "https://support.microsoft.com/en-us/windows/help-in-notepad-4d68c388-2ff2-0e7f-b706-35fb2ab88a8c"))
+item5.add_command(label="Send Feedback", command=lambda: wb.open_new_tab(
+    "https://playwithaayan.000webhostapp.com/contact.html"))
 item5.add_separator()
-item5.add_command(label="About Aayan Yasin", command="")
+item5.add_command(label="About Aayan Yasin", command=lambda: wb.open_new_tab(
+    "https://playwithaayan.000webhostapp.com/"))
 menu.add_cascade(label="Help", menu=item5)
 
 root.config(menu=menu)
