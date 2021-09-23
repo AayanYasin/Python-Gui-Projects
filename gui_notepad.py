@@ -9,7 +9,10 @@ import keyword as kb
 import webbrowser as wb
 
 root = Tk()
-root.iconbitmap("Notepad1.ico")
+try:
+    root.iconbitmap("Notepad1.ico")
+except Exception:
+    pass
 root.title("Untitled - Notepad - Aayan Yasin")
 O1x = 1120
 O2y = 550
